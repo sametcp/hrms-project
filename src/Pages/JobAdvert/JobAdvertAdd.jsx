@@ -181,8 +181,86 @@ export default function JobAdvertAdd() {
 
                                 </FormField>
 
-                                <Button type="submit" color="black">
-                                    GİRİŞ YAP
+                                <Grid stackable >
+                                <Grid.Column width={8}>
+                                    <FormField>
+                                        <Field
+                                            name="minSalary"
+                                            placeholder="En düşük ücret"
+                                            value={values.minSalary}
+                                            onChange={(fieldName, data) =>
+                                                setFieldValue("minSalary", data.value)
+                                            }
+                                        >
+
+                                        </Field>
+                                        {errors.minSalary && touched.minSalary && (
+                                            <div className={"ui pointing red basic label"}>
+                                                {errors.minSalary}
+                                            </div>
+                                        )}
+
+                                    </FormField>
+                                </Grid.Column>
+                                <Grid.Column width={8}>
+                                    <FormField>
+                                        <Field
+                                            name="maxSalary"
+                                            placeholder="En yüksek ücret"
+                                            value={values.maxSalary}
+                                            onChange={(fieldName, data) =>
+                                                setFieldValue("maxSalary", data.value)
+                                            }
+                                        >
+
+                                        </Field>
+                                        {errors.maxSalary && touched.maxSalary && (
+                                            <div className={"ui pointing red basic label"}>
+                                                {errors.maxSalary}
+                                            </div>
+                                        )}
+                                    </FormField>
+                                </Grid.Column>
+                            </Grid>
+
+                            <FormField style={{ marginTop: "1em" }}>
+                                <Field
+                                    type="date"
+                                    name="deadline"
+                                    placeholder="İş ilanının son günü"
+                                    value={values.deadline}
+                                    onChange={(fieldName, data) =>
+                                        setFieldValue("deadline", data.value)
+                                    }
+                                >
+
+                                </Field >
+                                {errors.deadline && touched.deadline && (
+                                    <div className={"ui pointing red basic label"}>
+                                        {errors.deadline}
+                                    </div>
+                                )}
+
+                            </FormField>
+
+                            <FormField style={{ marginTop: "1em" }}>
+                                <TextArea
+                                    name="jobStatement"
+                                    placeholder="Açıklama giriniz"
+                                    value={values.jobStatement}
+                                    onChange={(fieldName, data) =>
+                                        setFieldValue("jobStatement", data.value)
+                                    }
+                                />
+                                {errors.jobStatement && touched.jobStatement && (
+                                    <div className={"ui pointing red basic label"}>
+                                        {errors.jobStatement}
+                                    </div>
+                                )}
+                            </FormField>
+
+                                <Button type="submit" color="black" style={{ marginTop: "2em" }}>
+                                    İŞ İLANI EKLE
                                 </Button>
 
                             </Form>
