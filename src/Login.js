@@ -41,7 +41,7 @@ const Login = () => {
 
                 
                 {
-                  ({values, errors, handleChange, handleSubmit, handleReset, dirty, isSubmitting, touched}) => (
+                  ({values, errors, handleChange, handleSubmit, dirty, isSubmitting, touched}) => (
                     <form onSubmit = {handleSubmit}>
                       <h2>İşveren</h2>
                       <input id="name" 
@@ -120,7 +120,7 @@ const Login = () => {
                     </div> */}
                     <br></br>
 
-                    <button type="submit" disabled={isSubmitting || !dirty }>Giriş Yap</button>
+                    <button type="submit"  disabled={isSubmitting || !dirty }>Giriş Yap</button>
                     </form>
                   )
                 }

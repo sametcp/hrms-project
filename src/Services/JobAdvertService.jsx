@@ -1,20 +1,19 @@
 import axios from "axios";
 
 export default class JobAdvertService{
-    getJobAdverts()
+
+    addJobadvertisement(values)
     {
-        return axios.get("http://localhost:8080/api/jobadvert/getAll")
+        return axios.post("http://localhost:8080/api/jobadvert/add",values)
     }
+
+    getByConfirmFalse(){
+        return axios.get("http://localhost:8080/api/jobadvert/getByIsConfirm?isConfirm=false")
+    }
+    
     getOpenJobAdverts()
     {
-        return axios.get("http://localhost:8080/api/jobadverts/getAllOpenJobAdvertList")
+        return axios.get("http://localhost:8080/api/jobadvert/getByIsConfirmAndIsActive?isActive=true&isConfirm=true")
     }
-    getJobAdvertsOrderByPublishedAt()
-    {
-        return axios.get("http://localhost:8080/api/jobadvert/findAllByOrderByPublishedAt")
-    }
-    addJobadvertisement()
-    {
-        return axios.post("http://localhost:8080/api/jobadvert/add")
-    }
+    
 }
