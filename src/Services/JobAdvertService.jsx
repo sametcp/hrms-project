@@ -11,9 +11,14 @@ export default class JobAdvertService{
         return axios.get("http://localhost:8080/api/jobadvert/getByIsConfirm?isConfirm=false")
     }
     
-    getOpenJobAdverts()
+    getByConfirmTrue()
     {
-        return axios.get("http://localhost:8080/api/jobadvert/getByIsConfirmAndIsActive?isActive=true&isConfirm=true")
+        return axios.get("http://localhost:8080/api/jobadvert/getByIsConfirm?isConfirm=true")
+    }
+
+    confirmJobAdvert(id)
+    {
+        return axios.post("http://localhost:8080/api/jobadvert/updateIsConfirm?id="+id+"&isConfirm=true")
     }
     
 }

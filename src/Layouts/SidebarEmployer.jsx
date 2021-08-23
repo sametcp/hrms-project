@@ -10,7 +10,7 @@ export default function SidebarEmployer() {
         <div>
             <Menu icon='labeled' vertical>
 
-                <Menu.Item name='jobadverts'><Icon name='announcement' />İş ilanlarım</Menu.Item>
+                <Menu.Item as = {Link} to='/employers/addjobadvert' name='jobadverts'><Icon name='announcement' />İş ilanlarım</Menu.Item>
 
             </Menu>
         </div >

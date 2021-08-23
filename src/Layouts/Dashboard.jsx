@@ -9,6 +9,7 @@ import NotFound from '../Pages/NotFound/NotFound'
 import SidebarEmployer from './SidebarEmployer'
 import HomePage from '../Pages/HomePage/HomePage'
 import JobAdvertAdd from '../Pages/JobAdvert/JobAdvertAdd'
+import ConfirmJobAdvert from '../Pages/JobAdvert/ConfirmJobAdvert'
 
 
 export default function Dashboard() {
@@ -21,14 +22,15 @@ export default function Dashboard() {
                     <Grid.Column width={4}>
                         <Switch>
                             <Route exact path="/" />
-                            <Route path = "/employers" component = {SidebarEmployer}>
+                            <Route exact path = "/employers" component = {SidebarEmployer}>
                             </Route>
                         </Switch>
                     </Grid.Column>
 
                     <Grid.Column width={12}>
                             <Route exact path="/"/>
-                            <Route path="/employers" component={JobAdvertAdd} />
+                            <Route exact path="/employers/addjobadvert" component={JobAdvertAdd} />
+                            <Route exact path="/employers/unconfirmedjobadverts" component={ConfirmJobAdvert} />
                             <Route path="/jobseekers" component={JobSeekerList} />
                             <Route path="/jobadverts" component={JobAdvertList} />
                     </Grid.Column>

@@ -12,8 +12,7 @@ import HomePage from './Pages/HomePage/HomePage';
 import './index.css';
 
 function App() {
-
-
+  
 
   return (
     <div className="bodye">
@@ -24,6 +23,8 @@ function App() {
       <Container className="main">
         <Dashboard />
       </Container>
+      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      <footer></footer>
       </div>
     </div>
   );
