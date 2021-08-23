@@ -15,7 +15,7 @@ function App() {
   
 
   return (
-    <div className="bodye">
+    <div className="overlay">
     <div className="App"  >
       <Container>
         <Navi />
@@ -23,7 +23,6 @@ function App() {
       <Container className="main">
         <Dashboard />
       </Container>
-      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
       <footer></footer>
       </div>
     </div>
