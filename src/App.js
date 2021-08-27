@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className="overlay">
-    <div className="App"  >
+    <div className="App">
       <Container>
         <Navi />
       </Container>
