@@ -1,6 +1,6 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-import { Form, Grid, Header, Segment, Button} from 'semantic-ui-react'
+import { NavLink, Link } from 'react-router-dom'
+import { Form, Grid, Header, Segment, Button, Message } from 'semantic-ui-react'
 
 export default function RegisterEmployer() {
     return (
@@ -55,14 +55,11 @@ export default function RegisterEmployer() {
                                 placeholder="Şifre tekrar"
                                 type="password"
                             />
-                            <Button color="green">KAYIT OL</Button>
+                            <Button color="green" as={NavLink} to="/employer">KAYIT OL</Button>
                         </Segment>
 
-                            Zaten üye misin?{" "}
-                            <Button color="orange" as={NavLink} to="/loginemployer">
-                                GİRİŞ YAP
-                            </Button>
-                        
+                        <Message color = "yellow"><Link to={"/registeremployer"}><b>İşveren kayıtları sistem çalışanları tarafından onaylandıktan sonra aktif hale gelmektedir!</b></Link></Message>
+
                     </Form>
                 </Grid.Column>
             </Grid>

@@ -15,7 +15,6 @@ function App() {
   
 
   return (
-    <div className="overlay">
     <div className="App">
       <Container>
         <Navi />
@@ -25,7 +24,6 @@ function App() {
       </Container>
       <footer></footer>
       </div>
-    </div>
   );
 }
 

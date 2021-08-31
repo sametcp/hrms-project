@@ -1,23 +1,36 @@
 import React, { Component, useState } from 'react'
-import CreateAccount from './CreateAccount'
-import Login from './Login'
 import { Link, NavLink, useHistory } from 'react-router-dom'
-import { Button, Dropdown, Menu } from 'semantic-ui-react'
+import { Button, Container, Dropdown, Menu } from 'semantic-ui-react'
+import SignIn from './SignIn'
+import SignOut from './SignOut'
+import { useSelector } from 'react-redux'
 
 export default function Navi() {
 
+    const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const history = useHistory()
+    
+    function handleSignOut() {
+        setIsAuthenticated(false)
+        history.push("/")
+    }
+
+    function handleSignIn() {
+        setIsAuthenticated(true)
+    }
+
     return (
         <div>
-            <Menu size='large'>
-                <Menu.Item as = {Link} to='/'>HRMS</Menu.Item>
-                <Menu.Item as = {Link} to='/jobadverts'>İŞ İLANLARINA GİTMEK İÇİN TIKLA</Menu.Item>
+          <Menu widths = "6" size='large'>
+                <Container>
+                    <Menu.Item as = {NavLink} to ="/" color = "blue"><b>Ana Sayfa</b></Menu.Item>
+                    <Menu.Item as = {NavLink} to ="/jobadverts"><b>İş İlanları</b></Menu.Item>
+                    
+                    <Menu.Menu position='right'>
+                        {isAuthenticated ? <SignIn signOut = {handleSignOut} bisey = "1"/> : <SignOut signIn = {handleSignIn}/>}      
+                    </Menu.Menu>
 
-                <Menu.Menu position='right'>
-                    <Menu.Item>
-                        <Button primary as = {NavLink} to ="/login">GİRİŞ YAP</Button>
-                        <Button primary style={{ marginLeft: "0.5em" }}>KAYDOL</Button>
-                    </Menu.Item>
-                </Menu.Menu>
+                </Container>
             </Menu>
         </div>
     )

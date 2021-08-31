@@ -15,4 +15,9 @@ export default class LanguageService {
     {
         return axios.delete("http://localhost:8080/api/foreignlanguages/delete?id=" + id);
     }
+
+    getByJobSeekerId(id)
+    {
+        return axios.get("http://localhost:8080/api/foreignlanguages/getAllByJobseekerId?id="+id)
+    }
 }

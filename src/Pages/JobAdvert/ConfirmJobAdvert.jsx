@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Table } from 'semantic-ui-react';
 import JobAdvertService from '../../Services/JobAdvertService';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { ButtonToggle } from 'reactstrap';
-import { toast } from 'react-toastify';
 
 export default function ConfirmJobAdvert() {
 
@@ -19,15 +17,15 @@ export default function ConfirmJobAdvert() {
     const confirm = (id) => {
         jobAdvertService
           .confirmJobAdvert(id)
-          .then(toast.success("İLAN ONAYLANDI"),window.location.reload());
+          .then(window.location.reload());
       };
-
     return (
         <div>
-             <Table celled>
+            
+             <Table celled color={'blue'} key={'blue'}>
                 <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell>Company Name</Table.HeaderCell>
+                        <Table.HeaderCell >Company Name</Table.HeaderCell>
                         <Table.HeaderCell>Statement</Table.HeaderCell>
                         <Table.HeaderCell>Job</Table.HeaderCell>
                         <Table.HeaderCell>City</Table.HeaderCell>

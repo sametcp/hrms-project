@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import JobAdvertService from "../../Services/JobAdvertService";
-import { Table } from 'semantic-ui-react'
+import { Button, Table } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
 
 export default function JobAdvertList() {
 
@@ -10,7 +11,7 @@ export default function JobAdvertList() {
         let jobAdvertService = new JobAdvertService()
         jobAdvertService.getByConfirmTrue()
         .then(result => setJobAdverts(result.data.data))
-    })
+    },[])
 
 
     return (
@@ -23,6 +24,7 @@ export default function JobAdvertList() {
                         <Table.HeaderCell>Job</Table.HeaderCell>
                         <Table.HeaderCell>City</Table.HeaderCell>
                         <Table.HeaderCell>Email</Table.HeaderCell>
+                        <Table.HeaderCell>Detail</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
@@ -35,6 +37,11 @@ export default function JobAdvertList() {
                                 <Table.Cell>{jobAdvert.jobPositions.jobTitle}</Table.Cell>
                                 <Table.Cell>{jobAdvert.city.name}</Table.Cell>
                                 <Table.Cell>{jobAdvert.employer.email}</Table.Cell>
+                                <Table.Cell><Button as={Link} to={`/jobadvert/${jobAdvert.id}/details`}
+                                        content="Show Details"
+                                        icon="right arrow"
+                                        labelPosition="right"
+                                /></Table.Cell>
                             </Table.Row>
                         ))
                     }

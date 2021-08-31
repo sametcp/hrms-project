@@ -33,7 +33,7 @@ export default function LogInEmployer() {
                                 fluid
                             />
                             <br/>
-                            <Button color='green' as={NavLink} to="/employers">GİRİŞ YAP</Button>
+                            <Button color='green' as={NavLink} to="/employer">GİRİŞ YAP</Button>
                             
                             <Message positive>
                                 Hesabınız yok mu ?{" "}

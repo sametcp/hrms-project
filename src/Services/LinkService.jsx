@@ -15,4 +15,9 @@ export default class LinkService {
     {
         return axios.delete("http://localhost:8080/api/links/delete?id=" + id);
     }
+
+    getByJobSeekerId(id)
+    {
+        return axios.get("http://localhost:8080/api/links/getAllByJobseekerId?id="+id)
+    }
 }

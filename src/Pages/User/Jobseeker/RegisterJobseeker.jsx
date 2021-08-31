@@ -1,14 +1,15 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-import { Form, Grid, Header, Segment, Button } from 'semantic-ui-react'
+import { NavLink, Link } from 'react-router-dom'
+import { Form, Grid, Header, Segment, Button, Message} from 'semantic-ui-react'
 
 export default function RegisterJobseeker() {
+
     return (
         <div>
             <Grid textAlign="center" verticalAlign="middle">
                 <Grid.Column>
                     <Header as="h2" inverted color="brown" textAlign="center">
-                        <Header.Content>İŞ ARAYAN YENİ ÜYELİK</Header.Content>
+                        <Header.Content>İŞ ARAYAN İÇİN YENİ ÜYELİK</Header.Content>
                     </Header>
                     <Form>
                         <Segment textAlign="left" color="red" stacked>
@@ -66,13 +67,10 @@ export default function RegisterJobseeker() {
                                 placeholder="Şifre tekrar"
                                 type="password"
                             />
-                            <Button color="green">KAYIT OL</Button>
+                            <Button color="green" as={NavLink} to="/jobseeker">KAYIT OL</Button>
                         </Segment>
 
-                        Zaten üye misin?{" "}
-                        <Button color="orange" as={NavLink} to="/loginjobseeker">
-                            GİRİŞ YAP
-                        </Button>
+                    <Message color = "blue"><Link to={"/registeremployer"}><b>İşveren olarak kaydolmak için buraya tıkla</b></Link></Message>
 
                     </Form>
                 </Grid.Column>

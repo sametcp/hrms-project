@@ -18,7 +18,11 @@ export default class JobAdvertService{
 
     confirmJobAdvert(id)
     {
-        return axios.post("http://localhost:8080/api/jobadvert/updateIsConfirm?id="+id+"&isConfirm=true")
+        return axios.put("http://localhost:8080/api/jobadvert/updateIsConfirm?id="+id+"&isConfirm=true")
+    }
+
+    getById(id){
+        return axios.get("http://localhost:8080/api/jobadvert/findById?id="+id)
     }
     
 }

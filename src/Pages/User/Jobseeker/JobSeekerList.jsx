@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import JobSeekerService from "../../../Services/JobSeekerService";
-import { Table } from 'semantic-ui-react'
+import { Button, Table } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
 
 export default function JobSeekerList() {
 
@@ -10,7 +11,7 @@ export default function JobSeekerList() {
         let jobSeekerService = new JobSeekerService()
         jobSeekerService.getJobSeekers()
         .then(result => setJobSeekers(result.data.data))
-    })
+    },[])
 
     return (
         <div>
@@ -22,6 +23,7 @@ export default function JobSeekerList() {
                         <Table.HeaderCell>National Id</Table.HeaderCell>
                         <Table.HeaderCell>Date Of Birth</Table.HeaderCell>
                         <Table.HeaderCell>Email</Table.HeaderCell>
+                        <Table.HeaderCell>Detail</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
@@ -34,6 +36,11 @@ export default function JobSeekerList() {
                                 <Table.Cell>{jobSeeker.nationalId}</Table.Cell>
                                 <Table.Cell>{jobSeeker.dateOfBirth}</Table.Cell>
                                 <Table.Cell>{jobSeeker.email}</Table.Cell>
+                                <Table.Cell><Button as={Link} to={`/jobseeker/${jobSeeker.id}/details`}
+                                        content="Show Details"
+                                        icon="right arrow"
+                                        labelPosition="right"
+                                /></Table.Cell>
                             </Table.Row>
                         ))
                     }

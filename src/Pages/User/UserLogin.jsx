@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import { NavLink, useHistory, Link } from "react-router-dom";
 import { Grid, Header, Segment, Form, Message, Button,  } from "semantic-ui-react";
 
-export default function LogInJobseeker() {
+export default function UserLogin() {
 
     return (
         <div>
             <Grid textAlign="center" verticalAlign="middle">
                 <Grid.Column>
                     <Header as="h2" inverted color="brown" textAlign="center">
-                        <Header.Content>İŞ ARAYAN GİRİŞİ</Header.Content>
+                        <Header.Content>KULLANICI GİRİŞİ</Header.Content>
                     </Header>
 
                     <Form>
@@ -32,7 +32,7 @@ export default function LogInJobseeker() {
                                 fluid
                             />
                             <br/>
-                            <Button color='green' as={NavLink} to="/jobseekers">GİRİŞ YAP</Button>
+                            <Button color='green' as={NavLink} to="/">GİRİŞ YAP</Button>
                             
                             <Message positive>
                                 Hesabınız yok mu ?{" "}
@@ -40,8 +40,6 @@ export default function LogInJobseeker() {
                                     KAYIT OL
                                 </Button>
                             </Message>
-
-                            <Message info><Link to={"/loginemployer"}><b>İşveren olarak giriş yapmak için tıkla</b></Link></Message>
 
                         </Segment>
                     </Form>
