@@ -41,7 +41,7 @@ export default function UpdateEducationJobSeeker() {
             id : values.id,
             schoolName : values.schoolName,
             department : values.department,
-            department : values.department
+            startDate : values.startDate
         }
     }
 
