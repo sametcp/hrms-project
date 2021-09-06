@@ -1,19 +1,12 @@
-import './App.css';
-import 'semantic-ui-css/semantic.min.css'
-import EmployerList from './Pages/User/Employer/EmployerList';
-import { Container } from 'semantic-ui-react';
-import JobAdvertList from './Pages/JobAdvert/JobAdvertList';
-import UserList from './Pages/User/UserList';
-import JobSeekerList from './Pages/User/Jobseeker/JobSeekerList';
-import JobPositionList from './Pages/JobAdvert/JobPosition/JobPositionList';
-import Navi from './Layouts/Navi';
-import Dashboard from './Layouts/Dashboard';
-import HomePage from './Pages/HomePage/HomePage';
-import './index.css';
+import "./App.css";
+import "semantic-ui-css/semantic.min.css";
+import { Container } from "semantic-ui-react";
+import Navi from "./Layouts/Navi";
+import Dashboard from "./Layouts/Dashboard";
+import "./index.css";
+import HomePage from "./Pages/HomePage/HomePage";
 
 function App() {
-  
-
   return (
     <div className="App">
       <Container>
@@ -22,8 +15,10 @@ function App() {
       <Container className="main">
         <Dashboard />
       </Container>
-      <footer></footer>
-      </div>
+      <footer>
+
+      </footer>
+    </div>
   );
 }
 

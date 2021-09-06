@@ -16,85 +16,105 @@ import JobSeekerProfile from '../Pages/User/Jobseeker/JobSeekerProfile'
 import EmployerProfile from '../Pages/User/Employer/EmployerProfile'
 import EmployerUpdate from '../Pages/User/Employer/EmployerUpdate'
 import EmployerDetails from '../Pages/User/Employer/EmployerDetails'
-import JobSeekerDetails from '../Pages/User/Jobseeker/JobSeekerDetails'
-import Admin from '../Pages/User/Employee/Admin'
+import Admin from '../Pages/User/Employee/AdminLogin'
 import EmployeeProfile from '../Pages/User/Employee/EmployeeProfile'
 import EmployeeUpdate from '../Pages/User/Employee/EmployeeUpdate'
 import PendingApproval from '../Pages/User/Employee/PendingApproval'
 import JobSeekerSettings from '../Pages/User/Jobseeker/JobSeekerSettings'
 import ProfileSidebarJobSeeker from '../Pages/User/Jobseeker/ProfileSideBarJobsSeeker'
 import JobSeekerCV from '../Pages/User/Jobseeker/CV/JobSeekerCV'
-import UpdateEducationJobSeeker from '../Pages/User/Jobseeker/CV/UpdateEducationJobSeeker'
+import UpdateEducation from '../Pages/User/Jobseeker/CV/UpdateEducation'
+import { ToastContainer } from 'react-toastify'
+import UpdateJobExperience from '../Pages/User/Jobseeker/CV/UpdateJobExperience'
+import UpdateCoverLetter from '../Pages/User/Jobseeker/CV/UpdateCoverLetter'
+import UpdateLanguage from '../Pages/User/Jobseeker/CV/UpdateLanguage'
+import UpdateLink from '../Pages/User/Jobseeker/CV/UpdateLink'
+import UpdateSkill from '../Pages/User/Jobseeker/CV/UpdateSkill'
+import FavoriteAdvertisements from '../Pages/JobAdvert/FavoriteAdvertisements'
+import SidebarAdmin from '../Pages/User/Employee/SidebarAdmin'
+import HomePage from '../Pages/HomePage/HomePage'
+import JobAdvertsForEmployee from '../Pages/User/Employee/JobAdvertsForEmployee'
 
 
 export default function Dashboard() {
     return (
         <div>
-
+            <ToastContainer position="bottom-right" />
             <Grid>
 
-                    <Grid.Column width={4}>
-                        <Route exact path="/" />
-                        <Route exact path="/jobseeker" component={SidebarJobSeeker}/>
-                        <Route exact path="/jobseeker/:id/profile" component={ProfileSidebarJobSeeker}/>
-                        <Route exact path="/jobseeker/:id/personalinfo" component={ProfileSidebarJobSeeker}/>
-                        <Route exact path="/jobseeker/:id/cv" component={ProfileSidebarJobSeeker}/>
+                <Grid.Column width={16}>
+                    <Route exact path="/" component={HomePage} />
+                </Grid.Column>
 
-                        <Route path="/employer" component={SidebarEmployer} />
-                        <Route path="/employerlist" component={SidebarJobSeeker} />
+                <Grid.Column width={4}>
 
-                        <Route path="/jobadverts" component={SidebarJobSeeker} />
-                    </Grid.Column>
+                    <Route exact path="/jobseeker" component={SidebarJobSeeker} />
+                    <Route path="/jobseeker/:id" component={ProfileSidebarJobSeeker} />
 
+                    <Route path="/employer" component={SidebarEmployer} />
+                    <Route path="/employerlist" component={SidebarJobSeeker} />
 
-
-                    <Grid.Column width={12}>
-                        <Route exact path="/" />
-                        
+                    <Route path="/jobadverts" component={SidebarJobSeeker} />
 
 
-                        <Route path="/userlogin" component = {UserLogin}/>
+                    <Route path="/admin/:id" component={SidebarAdmin} />
+                </Grid.Column>
 
 
 
-                        <Route path="/jobseekers" component={JobSeekerList} />
-                        {/* <Route path="/loginjobseeker" component={LogInJobseeker} /> */}
-                        <Route path="/registerjobseeker" component = {RegisterJobseeker} />
-                        <Route exact path="/jobseeker/:id/personalinfo" component = {JobSeekerProfile} />
-                        <Route exact path="/jobseeker/:id/cv" component = {JobSeekerCV} />
-                        <Route exact path="/jobseeker/:id/details"component = {JobSeekerDetails} />
-                        <Route exact path="/jobseeker/:id/settings"component = {JobSeekerSettings} />
-
-                        <Route exact path="/jobseeker/:id/updateeducationjobseeker"component = {UpdateEducationJobSeeker} />
+                <Grid.Column width={12}>
+                    <Route exact path="/" />
 
 
 
-                        <Route exact path = "/employer"/>
-                        <Route exact path = "/employerlist" component = {EmployerList}/>
-                        {/* <Route path="/loginemployer" component={LogInEmployer} /> */}
-                        <Route path="/registeremployer" component={RegisterEmployer} />
-                        <Route exact path="/employer/addjobadvert" component={JobAdvertAdd} />
-                        <Route exact path="/employer/unconfirmedjobadverts" component={ConfirmJobAdvert} />
-                        <Route exact path="/employer/profile" component = {EmployerProfile} />
-                        <Route exact path="/employer/update" component = {EmployerUpdate} />
-                        <Route exact path="/employer/:id/details" component = {EmployerDetails} />
-
-
-                       
-                        <Route path="/jobadverts" component={JobAdvertList} />
-                        <Route exact path="/jobadvert/:id/details" component={JobAdvertDetail} />
+                    <Route path="/userlogin" component={UserLogin} />
 
 
 
-                        <Route exact path="/admin" component={Admin}/>
-                        <Route exact path="/employee/profile"  component={EmployeeProfile}/>
-                        <Route exact path="/employee/update" component={EmployeeUpdate} />
-                        <Route exact path="/employee/pendingapproval" component={PendingApproval}/>
-        
+                    <Route path="/jobseekers" component={JobSeekerList} />
+                    {/* <Route path="/loginjobseeker" component={LogInJobseeker} /> */}
+                    <Route path="/registerjobseeker" component={RegisterJobseeker} />
+                    <Route exact path="/jobseeker/:id/personalinfo" component={JobSeekerProfile} />
+                    <Route exact path="/jobseeker/:id/cv" component={JobSeekerCV} />
+                    <Route exact path="/jobseeker/:id/settings" component={JobSeekerSettings} />
 
-                        {/* <Route exact path="/login" component={Login} />
+
+                    <Route exact path="/jobseeker/:id/cv/:id/updateeducationjobseeker" component={UpdateEducation} />
+                    <Route exact path="/jobseeker/:id/cv/:id/updatejobexperiencejobseeker" component={UpdateJobExperience} />
+                    <Route exact path="/jobseeker/:id/cv/:id/updatecoverletterjobseeker" component={UpdateCoverLetter} />
+                    <Route exact path="/jobseeker/:id/cv/:id/updatelanguagejobseeker" component={UpdateLanguage} />
+                    <Route exact path="/jobseeker/:id/cv/:id/updatelinkjobseeker" component={UpdateLink} />
+                    <Route exact path="/jobseeker/:id/cv/:id/updateskilljobseeker" component={UpdateSkill} />
+                    <Route exact path="/jobseeker/:id/favoriteads" component={FavoriteAdvertisements} />
+
+
+
+                    <Route exact path="/employer" />
+                    <Route exact path="/employerlist" component={EmployerList} />
+                    {/* <Route path="/loginemployer" component={LogInEmployer} /> */}
+                    <Route path="/registeremployer" component={RegisterEmployer} />
+                    <Route exact path="/employer/addjobadvert" component={JobAdvertAdd} />
+                    <Route exact path="/employer/:id/personalinfo" component={EmployerProfile} />
+                    <Route exact path="/employer/:id/personalinfoupdate" component={EmployerUpdate} />
+                    <Route exact path="/employer/:id/details" component={EmployerDetails} />
+
+
+
+                    <Route path="/jobadverts" component={JobAdvertList} />
+                    <Route exact path="/jobadvert/:id/details" component={JobAdvertDetail} />
+
+
+
+                    <Route exact path="/admin" component={Admin} />
+                    <Route exact path="/admin/:id/profile" component={EmployeeProfile} />
+                    <Route exact path="/admin/:id/update" component={EmployeeUpdate} />
+                    <Route exact path="/admin/63/unconfirmedjobadverts" component={ConfirmJobAdvert} />
+                    <Route exact path="/admin/63/jobadverts" component={JobAdvertsForEmployee} />
+                    
+
+                    {/* <Route exact path="/login" component={Login} />
                         <Route exact path="/login" component={Login2} /> */}
-                    </Grid.Column>
+                </Grid.Column>
 
             </Grid>
         </div>

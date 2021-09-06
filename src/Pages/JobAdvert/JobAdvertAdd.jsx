@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Field, ErrorMessage, Form, Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import JobAdvertService from '../../Services/JobAdvertService';
 import CityService from '../../Services/CityService'
@@ -7,7 +7,7 @@ import WorkHourService from '../../Services/WorkHourService'
 import WorkTypeService from '../../Services/WorkTypeService'
 import JobPositionService from '../../Services/JobPositionService'
 import { useHistory } from 'react-router-dom';
-import { FormField, Button, Image, Header, Grid, TextArea, Segment, FormGroup, GridColumn, FormTextArea } from 'semantic-ui-react';
+import { Button, Header, Grid, Segment } from 'semantic-ui-react';
 import HRMSDropdown from '../../utilities/customFormControls/HRMSDropdown';
 import HRMSInput from '../../utilities/customFormControls/HRMSInput';
 
@@ -102,98 +102,109 @@ export default function JobAdvertAdd() {
                     <Segment color="red">
                         <Form className="ui form">
                             <Grid>
-                                <Grid.Column>
-                                    <HRMSDropdown
-                                        onChange={(fieldName, data) =>
-                                            setFieldValue("jobPositionId", data.value)
-                                        }
-                                        name="jobPositionId"
-                                        placeholder="Pozisyon Seçiniz"
-                                        options={jobPositionValues}
-                                    />
-                                </Grid.Column>
+                                <Grid.Row>
+                                    <Grid.Column>
+                                        <HRMSDropdown
+                                            onChange={(fieldName, data) =>
+                                                setFieldValue("jobPositionId", data.value)
+                                            }
+                                            name="jobPositionId"
+                                            placeholder="Pozisyon Seçiniz"
+                                            options={jobPositionValues}
+                                        />
+                                    </Grid.Column>
+                                </Grid.Row>
                             </Grid>
                             <Grid>
-                                <Grid.Column>
-                                    <HRMSDropdown
-                                        onChange={(fieldName, data) =>
-                                            setFieldValue("cityId", data.value)
-                                        }
-                                        name="cityId"
-                                        placeholder="Şehir Seçiniz"
-                                        options={cityValues}
-                                    />
-                                </Grid.Column>
+                                <Grid.Row>
+                                    <Grid.Column>
+                                        <HRMSDropdown
+                                            onChange={(fieldName, data) =>
+                                                setFieldValue("cityId", data.value)
+                                            }
+                                            name="cityId"
+                                            placeholder="Şehir Seçiniz"
+                                            options={cityValues}
+                                        />
+                                    </Grid.Column>
+                                </Grid.Row>
                             </Grid>
 
                             <Grid>
-                                <Grid.Column width={8}>
-                                    <HRMSDropdown
-                                        onChange={(fieldName, data) =>
-                                            setFieldValue("workTypeId", data.value)
-                                        }
-                                        name="workTypeId"
-                                        placeholder="Çalışma Türü Seçiniz"
-                                        options={workTypeValues}
-                                    />
-                                </Grid.Column>
-                                <Grid.Column width={8}>
-                                    <HRMSDropdown
-                                        onChange={(fieldName, data) =>
-                                            setFieldValue("workHourId", data.value)
-                                        }
-                                        name="workHourId"
-                                        placeholder="Çalışma Zamanı Seçiniz"
-                                        options={workHourValues}
-                                    />
-                                </Grid.Column>
+                                <Grid.Row>
+                                    <Grid.Column width={8}>
+                                        <HRMSDropdown
+                                            onChange={(fieldName, data) =>
+                                                setFieldValue("workTypeId", data.value)
+                                            }
+                                            name="workTypeId"
+                                            placeholder="Çalışma Türü Seçiniz"
+                                            options={workTypeValues}
+                                        />
+                                    </Grid.Column>
+                                    <Grid.Column width={8}>
+                                        <HRMSDropdown
+                                            onChange={(fieldName, data) =>
+                                                setFieldValue("workHourId", data.value)
+                                            }
+                                            name="workHourId"
+                                            placeholder="Çalışma Zamanı Seçiniz"
+                                            options={workHourValues}
+                                        />
+                                    </Grid.Column>
+                                </Grid.Row>
                             </Grid>
 
                             <Grid stackable>
-                                <Grid.Column width={8}>
-                                    <HRMSInput
-                                        name="salaryMin"
-                                        type="number"
-                                        placeholder="Minimum Maaş Skalası"
-                                    />
-                                </Grid.Column>
-                                <Grid.Column width={8}>
-                                    <HRMSInput
-                                        name="salaryMax"
-                                        type="number"
-                                        placeholder="Maksimum Maaş Skalası"
-                                    />
-                                </Grid.Column>
+                                <Grid.Row>
+                                    <Grid.Column width={8}>
+                                        <HRMSInput
+                                            name="salaryMin"
+                                            type="number"
+                                            placeholder="Minimum Maaş Skalası"
+                                        />
+                                    </Grid.Column>
+                                    <Grid.Column width={8}>
+                                        <HRMSInput
+                                            name="salaryMax"
+                                            type="number"
+                                            placeholder="Maksimum Maaş Skalası"
+                                        />
+                                    </Grid.Column>
+                                </Grid.Row>
                             </Grid>
 
                             <Grid>
-                                <Grid.Column width={8}>
-                                    <HRMSInput
-                                        name="openPositionCount"
-                                        type="number"
-                                        label="Açık Pozisyon Sayısı"
-                                        placeholder="Açık Pozisyon Sayısı"
-                                    />
+                                <Grid.Row>
+                                    <Grid.Column width={8}>
+                                        <HRMSInput
+                                            name="openPositionCount"
+                                            type="number"
+                                            label="Açık Pozisyon Sayısı"
+                                            placeholder="Açık Pozisyon Sayısı"
+                                        />
 
-                                </Grid.Column>
-                                <Grid.Column width={8}>
-                                    <HRMSInput
-                                        name="deadline"
-                                        type="date"
-                                        label="Son Başvuru Tarihi"
-                                    />
-                                </Grid.Column>
+                                    </Grid.Column>
+                                    <Grid.Column width={8}>
+                                        <HRMSInput
+                                            name="deadline"
+                                            type="date"
+                                            label="Son Başvuru Tarihi"
+                                        />
+                                    </Grid.Column>
+                                </Grid.Row>
                             </Grid>
 
                             <Grid>
-                                <Grid.Column >
-                                    <HRMSInput
-                                        name="statement"
-                                        type="text"
-                                        placeholder="İş hakkındaki açıklamalarınız"
-
-                                    />
-                                </Grid.Column>
+                                <Grid.Row>
+                                    <Grid.Column>
+                                        <HRMSInput
+                                            name="statement"
+                                            type="text"
+                                            placeholder="İş hakkındaki açıklamalarınız"
+                                        />
+                                    </Grid.Column>
+                                </Grid.Row>
                             </Grid><br />
 
                             <Button content="İLANI EKLE"

@@ -20,4 +20,9 @@ export default class EducationService{
     {
         return axios.get("http://localhost:8080/api/schools/getByJobseekerId?id="+id)
     }
+
+    getById(id)
+    {
+        return axios.get("http://localhost:8080/api/schools/getById?id="+id)
+    }
 }

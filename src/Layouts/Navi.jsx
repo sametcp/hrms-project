@@ -1,9 +1,8 @@
-import React, { Component, useState } from 'react'
-import { Link, NavLink, useHistory } from 'react-router-dom'
-import { Button, Container, Dropdown, Menu } from 'semantic-ui-react'
+import React, { useState } from 'react'
+import { NavLink, useHistory } from 'react-router-dom'
+import { Container, Menu } from 'semantic-ui-react'
 import SignIn from './SignIn'
 import SignOut from './SignOut'
-import { useSelector } from 'react-redux'
 
 export default function Navi() {
 

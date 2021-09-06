@@ -1,81 +1,74 @@
-import React, { useEffect, useState } from 'react'
-import { useHistory, useParams } from 'react-router'
+import React from 'react'
+import { useParams } from 'react-router-dom'
+import JobExperienceService from '../../../../Services/JobExperienceService'
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
-import EmployeeService from '../../../Services/EmployeeService';
 import { Grid, Header, Button } from 'semantic-ui-react';
-import HRMSInput from '../../../utilities/customFormControls/HRMSInput';
+import HRMSInput from '../../../../utilities/customFormControls/HRMSInput';
 import { toast } from 'react-toastify';
 
-export default function EmployerUpdate() {
+export default function UpdateJobExperience() {
 
     let { id } = useParams()
-    let employeeService = new EmployeeService()
-
-    const history = useHistory();
+    let jobExperienceService = new JobExperienceService()
 
     const initialValues = {
-        email: "",
-        password: "",
-        name: "",
-        lastName: ""
+        workplace: "",
+        position: "",
+        startDate: "",
+        endDate: ""
     }
 
     const validationSchema = Yup.object({
-        email: Yup.string().required("Giriş zorunludur"),
-        password: Yup.string().required("Giriş zorunludur"),
-        name: Yup.string().required("Giriş zorunludur"),
-        lastName: Yup.string().required("Giriş zorunludur")
+        workplace: Yup.string().required("Giriş zorunludur"),
+        position: Yup.string().required("Giriş zorunludur"),
+        startDate: Yup.date().required("Giriş zorunludur"),
+        endDate: Yup.date().required("Giriş zorunludur")
     });
 
     const onSubmit = ((values) => {
         values.id = id
         console.log(values)
-        employeeService.updateEmployee(values).then(toast.success("Bilgileriniz güncellendi."))
+        jobExperienceService.update(values).then(toast.success("Bilgilerin Başarıyla Güncellendi"))
     })
 
     return (
-        <div className="ui form">
-            <Header as="h2" inverted color="red">BİLGİLERİNİ GÜNCELLE</Header>
+        <div className = "ui form">
+            <Header as="h2" inverted color="red">EĞİTİM BİLGİLERİNİ GÜNCELLE</Header>
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
                 onSubmit={onSubmit}
             >
-
                 <Form>
                     <Grid>
                         <Grid.Row>
                             <Grid.Column>
-                                <HRMSInput name = "email" placeholder="E-mail adresiniz" type = "email"></HRMSInput>
+                                <HRMSInput name = "workplace" placeholder="İş yeri konumu (şehir)"></HRMSInput>
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
-
                     <Grid>
                         <Grid.Row>
                             <Grid.Column>
-                                <HRMSInput name = "password" placeholder="Şifreniz" type = "password"></HRMSInput>
+                                <HRMSInput name = "position" placeholder="İş Pozisyonu"></HRMSInput>
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
-
                     <Grid>
                         <Grid.Row>
                             <Grid.Column>
-                                <HRMSInput name = "name" placeholder="Adınız"></HRMSInput>
+                                <HRMSInput name = "startDate" placeholder="Eğitime başlama tarihi" type = "date"></HRMSInput>
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
-
                     <Grid>
                         <Grid.Row>
                             <Grid.Column>
-                                <HRMSInput name = "lastName" placeholder="Soyadınız"></HRMSInput>
+                                <HRMSInput name = "endDate" placeholder="Eğitim bitiş tarihi" type = "date"></HRMSInput>
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>
-
                     <Button content="GÜNCELLE"
                         labelPosition="right"
                         icon="add"
@@ -84,7 +77,6 @@ export default function EmployerUpdate() {
                         style={{ marginTop: "20px" }}>
                     </Button>
                 </Form>
-
             </Formik>
         </div>
     )

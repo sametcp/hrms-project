@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import authReducer from "../store/reducers/authReducer";
+import favoriteAdvertReducer from "./reducers/favoriteAdvertReducer";
 
 const rootReducer = combineReducers({
-    auth: authReducer
+    favoriteAdverts : favoriteAdvertReducer
 })
 
 export default rootReducer;

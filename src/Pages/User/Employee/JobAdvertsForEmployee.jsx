@@ -1,43 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import JobAdvertService from "../../Services/JobAdvertService";
+import { toast } from 'react-toastify'
 import { Button, Table, Menu, Icon } from 'semantic-ui-react'
 import { Link, useParams } from 'react-router-dom';
-import FavoriteAdvertisementsService from '../../Services/FavoriteAdvertisementsService';
-import { toast } from 'react-toastify';
-import { Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
-import { addToFavorites } from '../../store/actions/favoriteAdvertActions';
+import JobAdvertService from '../../../Services/JobAdvertService'
 
-export default function JobAdvertList() {
-
-    //const dispatch = useDispatch() 
-    //let { id } = useParams()
+export default function JobAdvertsForEmployee() {
 
     const [jobAdverts, setJobAdverts] = useState([])
-    let favoriteAdvertisementsService = new FavoriteAdvertisementsService()
+    let jobAdvertService = new JobAdvertService()
 
     useEffect(() => {
-        let jobAdvertService = new JobAdvertService()
         jobAdvertService.getByConfirmTrue()
             .then(result => setJobAdverts(result.data.data))
     }, [])
 
-    // const initialValues = {
-    //     jobAdvertId: "",
-    //     jobseekerId: ""
-    // }
+    //console.log(jobAdverts)
 
-    const onSubmit = ((jobAdvert) => {
-        let values = { jobAdvertId: jobAdvert.id, jobseekerId: 49 }
-        console.log(values)
-        favoriteAdvertisementsService.add(values).then(toast.success("Eklendi"))
+    const onSubmit = ((jobAdvertId) => {
+        jobAdvertService.cancelJobAdvert(jobAdvertId).then(window.location.reload());
     })
-
-    let active = false
-
-    const handleActive = (confirm) => {
-        active = confirm
-    }
 
     return (
         <div>
@@ -73,10 +54,10 @@ export default function JobAdvertList() {
                                 </Table.Cell>
                                 <Table.Cell>
                                     <Button
-                                        content="Favorilerime Ekle"
+                                        content="İlanı Pasifleştir"
                                         icon="right arrow"
                                         labelPosition="right"
-                                        onClick={() => onSubmit(jobAdvert)}
+                                        onClick={() => onSubmit(jobAdvert.id)}
                                     />
                                 </Table.Cell>
                             </Table.Row>
@@ -104,7 +85,6 @@ export default function JobAdvertList() {
                 </Table.Footer>
 
             </Table>
-
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
-import { Grid, Table, Icon, Button, Segment } from 'semantic-ui-react'
+import { Table, Icon, Button, Segment } from 'semantic-ui-react'
 import JobAdvertService from '../../Services/JobAdvertService'
 
 export default function JobAdvertDetail() {
@@ -37,7 +37,7 @@ export default function JobAdvertDetail() {
 
                     <Table.Row>
                         <Table.Cell><Icon color="blue" name="world" />Web Sitesi</Table.Cell>
-                        <Table.Cell> <a target="_blank" href={"https://" + jobAdvert.employer?.website}>
+                        <Table.Cell> <a rel="noreferrer"  target="_blank" href={"https://" + jobAdvert.employer?.website}>
                             {jobAdvert.employer?.website}</a>
                         </Table.Cell>
                     </Table.Row>
@@ -111,7 +111,7 @@ export default function JobAdvertDetail() {
 
                     <Table.Row>
                         <Table.Cell>Maksimum Maaş Skalası</Table.Cell>
-                        <Table.Cell width={8} >{jobAdvert.salaryMin} TL</Table.Cell>
+                        <Table.Cell width={8} >{jobAdvert.salaryMax} TL</Table.Cell>
                     </Table.Row>
                 </Table.Body>
             </Table>

@@ -1,15 +1,14 @@
 import React from 'react'
-import { NavLink} from "react-router-dom";
-import { Grid, Header, Segment, Form, Message, Button,  } from "semantic-ui-react";
+import { NavLink } from "react-router-dom";
+import { Grid, Header, Segment, Form, Message, Button } from "semantic-ui-react";
 
-export default function UserLogin() {
-
+export default function Admin() {
     return (
         <div>
-            <Grid textAlign="center" verticalAlign="middle">
+             <Grid textAlign="center" verticalAlign="middle">
                 <Grid.Column>
                     <Header as="h2" inverted color="brown" textAlign="center">
-                        <Header.Content>KULLANICI GİRİŞİ</Header.Content>
+                        <Header.Content>ADMİN GİRİŞİ</Header.Content>
                     </Header>
 
                     <Form>
@@ -32,14 +31,7 @@ export default function UserLogin() {
                                 fluid
                             />
                             <br/>
-                            <Button color='green' as={NavLink} to="/">GİRİŞ YAP</Button>
-                            
-                            <Message positive>
-                                Hesabınız yok mu ?{" "}
-                                <Button inverted color='google plus' size = "small" as={NavLink} to="/registerjobseeker">
-                                    KAYIT OL
-                                </Button>
-                            </Message>
+                            <Button color='green' as={NavLink} to="/admin/63/panel">GİRİŞ YAP</Button>
 
                         </Segment>
                     </Form>

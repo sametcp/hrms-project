@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { Button, Segment, Table } from 'semantic-ui-react'
 import JobSeekerService from "../../../Services/JobSeekerService"
 

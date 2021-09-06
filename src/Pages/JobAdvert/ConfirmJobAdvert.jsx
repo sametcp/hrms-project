@@ -11,18 +11,20 @@ export default function ConfirmJobAdvert() {
 
     useEffect(() => {
         jobAdvertService.getByConfirmFalse()
-        .then((result) => setJobAdverts(result.data.data))
+            .then((result) => setJobAdverts(result.data.data))
     }, [])
 
     const confirm = (id) => {
         jobAdvertService
-          .confirmJobAdvert(id)
-          .then(window.location.reload());
-      };
+            .confirmJobAdvert(id)
+            .then(window.location.reload());
+    };
+
+
     return (
         <div>
-            
-             <Table celled color={'blue'} key={'blue'}>
+
+            <Table celled color={'blue'} key={'blue'}>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell >Company Name</Table.HeaderCell>
@@ -43,14 +45,14 @@ export default function ConfirmJobAdvert() {
                                 <Table.Cell>{jobAdvert.jobPositions.jobTitle}</Table.Cell>
                                 <Table.Cell>{jobAdvert.city.name}</Table.Cell>
                                 <Table.Cell>{jobAdvert.employer.email}</Table.Cell>
-                                <Table.Cell textAlign="center"><ButtonToggle 
-                                onClick={() => confirm(jobAdvert.id)} color="success">CONFİRM</ButtonToggle></Table.Cell>
+                                <Table.Cell textAlign="center"><ButtonToggle
+                                    onClick={() => confirm(jobAdvert.id)} color="success">CONFİRM</ButtonToggle></Table.Cell>
                             </Table.Row>
                         ))
                     }
                 </Table.Body>
 
-                
+
 
             </Table>
         </div>
