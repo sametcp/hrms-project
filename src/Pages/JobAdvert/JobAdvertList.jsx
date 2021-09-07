@@ -1,31 +1,47 @@
 import React, { useEffect, useState } from 'react'
-import JobAdvertService from "../../Services/JobAdvertService";
-import { Button, Table, Menu, Icon } from 'semantic-ui-react'
-import { Link, useParams } from 'react-router-dom';
-import FavoriteAdvertisementsService from '../../Services/FavoriteAdvertisementsService';
+import { Link } from 'react-router-dom';
+import { Message, Icon, Table, Button, Pagination, Select } from 'semantic-ui-react';
+import JobAdvertService from '../../Services/JobAdvertService';
+import FavoriteAdversitementsService from '../../Services//FavoriteAdvertisementsService'
 import { toast } from 'react-toastify';
-import { Form, Formik } from 'formik';
-import { useDispatch } from 'react-redux';
-import { addToFavorites } from '../../store/actions/favoriteAdvertActions';
 
 export default function JobAdvertList() {
 
-    //const dispatch = useDispatch() 
-    //let { id } = useParams()
+    let jobAdvertService = new JobAdvertService();
+    let favoriteAdvertisementsService = new FavoriteAdversitementsService()
 
-    const [jobAdverts, setJobAdverts] = useState([])
-    let favoriteAdvertisementsService = new FavoriteAdvertisementsService()
+    const [pageNo, setPageNo] = useState(1);
+    const [pageSize, setPageSize] = useState(10);
+    const [totalPages, setTotalPages] = useState(0);
+
+    const handleChangePageNo = (event, { activePage }) => {
+        setPageNo(activePage);
+    };
+
+    const handleChangePageSize = (event, { value }) => {
+        setPageSize(value);
+    };
+
+    const pageSizeOptions = [
+        { key: 1, value: 10, text: "10 İlan" },
+        { key: 2, value: 20, text: "20 İlan" },
+        { key: 3, value: 50, text: "50 İlan" },
+        { key: 4, value: 100, text: "100 İlan" },
+    ];
+
+    const [jobAdverts, setJobAdverts] = useState([]);
 
     useEffect(() => {
-        let jobAdvertService = new JobAdvertService()
-        jobAdvertService.getByConfirmTrue()
-            .then(result => setJobAdverts(result.data.data))
-    }, [])
+        jobAdvertService.getJobAdvertsIsConfirmAndIsActiveWithPage(false, false, pageNo, pageSize)
+            .then(result => {
+                setJobAdverts(result.data.data);
+                setTotalPages(parseInt(result.data.massage));
+            })
 
-    // const initialValues = {
-    //     jobAdvertId: "",
-    //     jobseekerId: ""
-    // }
+    }, [pageNo, pageSize])
+    //console.log(jobAdverts)
+    //console.log(totalPages)
+
 
     const onSubmit = ((jobAdvert) => {
         let values = { jobAdvertId: jobAdvert.id, jobseekerId: 49 }
@@ -33,14 +49,19 @@ export default function JobAdvertList() {
         favoriteAdvertisementsService.add(values).then(toast.success("Eklendi"))
     })
 
-    let active = false
-
-    const handleActive = (confirm) => {
-        active = confirm
-    }
-
     return (
         <div>
+
+            <Message size="large">
+                Bir Sayfadaki İlan Sayısı {" "}
+                <Select
+                    search
+                    onChange={handleChangePageSize}
+                    placeholder="Seçiniz"
+                    options={pageSizeOptions}
+                />
+            </Message>
+
             <Table celled>
                 <Table.Header>
                     <Table.Row>
@@ -84,26 +105,16 @@ export default function JobAdvertList() {
                     }
                 </Table.Body>
 
-                <Table.Footer>
-                    <Table.Row>
-                        <Table.HeaderCell colSpan='7'>
-                            <Menu floated='right' pagination widths="12">
-                                <Menu.Item as='a' icon>
-                                    <Icon name='chevron left' />
-                                </Menu.Item>
-                                <Menu.Item as='a'>1</Menu.Item>
-                                <Menu.Item as='a'>2</Menu.Item>
-                                <Menu.Item as='a'>3</Menu.Item>
-                                <Menu.Item as='a'>4</Menu.Item>
-                                <Menu.Item as='a' icon>
-                                    <Icon name='chevron right' />
-                                </Menu.Item>
-                            </Menu>
-                        </Table.HeaderCell>
-                    </Table.Row>
-                </Table.Footer>
-
             </Table>
+
+            <Pagination
+                style={{ marginTop: "25pt" }}
+                firstItem={null}
+                lastItem={null}
+                activePage={pageNo}
+                onPageChange={handleChangePageNo}
+                totalPages={totalPages}
+            />
 
         </div>
     )
