@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
+import { NavLink } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { Table, Icon, Button, Segment } from 'semantic-ui-react'
 import JobAdvertService from '../../Services/JobAdvertService'
 
@@ -13,6 +15,10 @@ export default function JobAdvertDetail() {
         let jobAdvertService = new JobAdvertService()
         jobAdvertService.getById(id).then(result => setJobAdvert(result.data.data))
     }, [])
+
+    const toApply = () => {
+        toast.success("Bilgileriniz işveren ile paylaşıldı.", { theme: "colored" })
+    }
 
     //console.log(jobAdvert.jobPositions.jobTitle)
     return (
@@ -128,7 +134,7 @@ export default function JobAdvertDetail() {
 
                 <Table.Body>
                     <Table.Row>
-                        <Table.Cell>{jobAdvert.statement}</Table.Cell>
+                        <Table.Cell textAlign = "center">{jobAdvert.statement}</Table.Cell>
                     </Table.Row>
                 </Table.Body>
             </Table>
@@ -151,8 +157,8 @@ export default function JobAdvertDetail() {
             </Table>
 
             <br/>
-            <Button color="green">BAŞVUR</Button>
-
+            <Button color="green" onClick = {() => {toApply()}}>BAŞVUR</Button><br/>
+            <Button as = {NavLink} to = "/jobadverts" color="instagram">Diğer iş ilanlarına göz at</Button>
         </div>
     )
 }

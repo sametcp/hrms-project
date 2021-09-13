@@ -1,1 +1,1 @@
-export const favoritesItems = []
+export const favoriteItems = []

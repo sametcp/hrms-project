@@ -53,7 +53,7 @@ export default function UpdateSkill() {
                     </Button>
                 </Form>
             </Formik>
-
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         </div>
     )
 }

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { useHistory, useParams } from 'react-router-dom';
+import React from 'react'
+import { useParams } from 'react-router-dom';
 import EducationService from "../../../../Services/EducationService"
 import * as Yup from 'yup';
 import { toast } from 'react-toastify';
 import { Formik, Form } from 'formik';
-import { Card, Button, Icon, Segment, Grid, Header } from 'semantic-ui-react';
+import { Button, Grid, Header } from 'semantic-ui-react';
 import HRMSInput from '../../../../utilities/customFormControls/HRMSInput';
 
 export default function UpdateEducation() {
@@ -79,7 +79,7 @@ export default function UpdateEducation() {
                         style={{ marginTop: "20px" }}>
                     </Button>
                 </Form>
-            </Formik>
+            </Formik><br/><br/><br/><br/>
         </div>
     )
 }

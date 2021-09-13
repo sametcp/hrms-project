@@ -4,20 +4,16 @@ import { Container } from "semantic-ui-react";
 import Navi from "./Layouts/Navi";
 import Dashboard from "./Layouts/Dashboard";
 import "./index.css";
-import HomePage from "./Pages/HomePage/HomePage";
+import Footer from "./Layouts/Footer";
 
 function App() {
   return (
     <div className="App">
-      <Container>
-        <Navi />
-      </Container>
+      <Navi/>
       <Container className="main">
-        <Dashboard />
-      </Container>
-      <footer>
-
-      </footer>
+        <Dashboard/>
+      </Container><br/>
+      <Footer/>
     </div>
   );
 }

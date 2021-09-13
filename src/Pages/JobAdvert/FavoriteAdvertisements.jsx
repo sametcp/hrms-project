@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { Button, Table } from 'semantic-ui-react'
 import FavoriteAdvertisementsService from '../../Services/FavoriteAdvertisementsService'
+import { removeFromFavorites } from '../../store/actions/favoriteAdvertActions'
 
 export default function FavoriteAdvertisements() {
 
@@ -15,8 +17,13 @@ export default function FavoriteAdvertisements() {
 
     //console.log(favoriteAdverts)
 
-    const handleDeleteFavoriteAdvert = (id) => {
-        favoriteAdvertisementsService.delete(id).then(window.location.reload())
+
+    const dispatch = useDispatch()
+    const handleDeleteFavoriteAdvert = (favoriteAdvert) => {
+        dispatch(removeFromFavorites(favoriteAdvert))
+        favoriteAdvertisementsService.delete(favoriteAdvert.id)
+        toast.success("İlan favorilerden kaldırıldı!", { theme: "colored" })
+        setTimeout(() => window.location.reload(), 400);
     }
 
     return (
@@ -42,7 +49,7 @@ export default function FavoriteAdvertisements() {
                                 <Table.Cell>{favoriteAdvert.jobAdvert.jobPositions?.jobTitle}</Table.Cell>
                                 <Table.Cell>{favoriteAdvert.jobAdvert.city?.name}</Table.Cell>
                                 <Table.Cell>{favoriteAdvert.jobAdvert.employer?.email}</Table.Cell>
-                                <Table.Cell><Button negative onClick = {() => handleDeleteFavoriteAdvert(favoriteAdvert.id)}>Favorilerden Çıkart</Button></Table.Cell>
+                                <Table.Cell><Button negative onClick={() => handleDeleteFavoriteAdvert(favoriteAdvert)}>Favorilerden Çıkart</Button></Table.Cell>
                             </Table.Row>
                         ))
                     }

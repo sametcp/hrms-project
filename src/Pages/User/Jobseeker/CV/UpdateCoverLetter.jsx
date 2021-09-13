@@ -28,7 +28,7 @@ export default function UpdateCoverLetter() {
 
     return (
         <div className = "ui form">
-            <Header as="h2" inverted color="red">AÇIKLAMANI GÜNCELLE</Header>
+            <Header as="h2" inverted color="red">AÇIKLAMANI GÜNCELLE</Header><br/>
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
@@ -51,7 +51,7 @@ export default function UpdateCoverLetter() {
                         style={{ marginTop: "20px" }}>
                     </Button>
                 </Form>
-            </Formik>
+            </Formik><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         </div>
     )
 }

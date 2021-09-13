@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useHistory, useParams } from 'react-router'
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
@@ -85,7 +85,7 @@ export default function EmployerUpdate() {
                     </Button>
                 </Form>
 
-            </Formik>
+            </Formik><br/><br/><br/><br/>
         </div>
     )
 }

@@ -6,6 +6,8 @@ import JobSeekerService from "../../../Services/JobSeekerService"
 
 export default function JobSeekerProfile() {
 
+    //let {id} = useParams()
+
     const [jobSeeker, setJobSeeker] = useState({})
 
     useEffect(() => {
@@ -14,6 +16,12 @@ export default function JobSeekerProfile() {
             .then(result => setJobSeeker(result.data.data))
     }, [])
     //console.log(jobSeeker)
+
+    const [isShow, setIsShow] = useState(false)
+
+    function handleShow() {
+        setIsShow(true)
+    }
 
     return (
         <div>
@@ -61,13 +69,13 @@ export default function JobSeekerProfile() {
 
                     <Table.Row>
                         <Table.Cell><b>Şifre</b></Table.Cell>
-                        <Table.Cell width={8}><b>{jobSeeker.password}</b></Table.Cell>
+                        {isShow ? <Table.Cell>{jobSeeker.password}</Table.Cell> : <Table.Cell><Button active size="mini" onClick={handleShow}>GÖSTER</Button></Table.Cell>}
                     </Table.Row>
 
                 </Table.Body>
             </Table><br/>
 
-            <Button color = "instagram" fluid as = {NavLink} to = "/jobseeker/personalinfo/update">Bilgilerini Güncelle</Button>
+            <Button color = "instagram" fluid as = {NavLink} to = "/jobseeker/49/personalinfo/update">Bilgilerini Güncelle</Button><br/><br/>
 
         </div>
     )

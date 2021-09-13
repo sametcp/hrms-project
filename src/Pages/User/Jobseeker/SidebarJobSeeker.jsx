@@ -6,11 +6,9 @@ export default function SidebarJobSeeker() {
 
 
     return (
-
         <div>
-            <Menu icon='labeled' vertical>
-                <Menu.Item as = {Link} to='/jobadverts'><Icon name='announcement'/>İş İlanları</Menu.Item>
-                <Menu.Item as = {Link} to='/employerlist'><Icon name='users' /> İşverenler</Menu.Item>
+            <Menu icon='labeled' widths={4}>
+                <Menu.Item as={Link} to='/employerlist'><Icon name='users' /> İşverenler</Menu.Item>
             </Menu>
         </div >
 

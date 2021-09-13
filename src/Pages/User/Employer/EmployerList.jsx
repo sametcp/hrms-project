@@ -12,12 +12,12 @@ export default function EmployerList() {
         .then(result => setEmployers(result.data.data))
     },[])
 
+
     return (
         <div>
             <Table celled>
                 <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell>Id</Table.HeaderCell>
                         <Table.HeaderCell>Company Name</Table.HeaderCell>
                         <Table.HeaderCell>Website</Table.HeaderCell>
                         <Table.HeaderCell>Phone Number</Table.HeaderCell>
@@ -29,7 +29,6 @@ export default function EmployerList() {
                     {
                         employers.map(employer => (
                             <Table.Row key = {employer.id}>
-                                <Table.Cell>{employer.id}</Table.Cell>
                                 <Table.Cell>{employer.companyName}</Table.Cell>
                                 <Table.Cell>{employer.website}</Table.Cell>
                                 <Table.Cell>{employer.phoneNumber}</Table.Cell>

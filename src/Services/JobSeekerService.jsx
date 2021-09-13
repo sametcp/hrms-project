@@ -10,4 +10,9 @@ export default class JobSeekerService{
     {
         return axios.get("http://localhost:8080/api/jobseekers/getJobseekerById?id="+id)
     }
+
+    update(values)
+    {
+        return axios.put("http://localhost:8080/api/jobseekers/update",values)
+    }
 }

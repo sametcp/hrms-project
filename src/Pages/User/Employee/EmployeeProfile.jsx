@@ -59,7 +59,7 @@ export default function EmployeeProfile() {
                 </Table.Body>
             </Table><br />
 
-            <Button color="instagram" fluid as={NavLink} to="/admin/63/update">Bilgilerini Güncelle</Button>
+            <Button color="instagram" fluid as={NavLink} to="/admin/63/update">Bilgilerini Güncelle</Button><br/>
         </div>
     )
 }

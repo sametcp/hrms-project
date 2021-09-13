@@ -9,7 +9,7 @@ export default function JobSeekerList() {
 
     useEffect(() => {
         let jobSeekerService = new JobSeekerService()
-        jobSeekerService.getJobSeekers()
+        jobSeekerService.getAllJobSeekers()
         .then(result => setJobSeekers(result.data.data))
     },[])
 
@@ -46,7 +46,7 @@ export default function JobSeekerList() {
                     }
                 </Table.Body>
 
-            </Table>
+            </Table><br/>
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { Form, Grid, Header, Segment, Button, Message } from 'semantic-ui-react'
 
 export default function RegisterEmployer() {
@@ -7,11 +7,11 @@ export default function RegisterEmployer() {
         <div>
             <Grid textAlign="center" verticalAlign="middle">
                 <Grid.Column>
-                    <Header as="h2" inverted color="brown" textAlign="center">
+                    <Header as="h2" inverted color="green" textAlign="center">
                         <Header.Content>İŞVEREN YENİ ÜYELİK</Header.Content>
                     </Header>
                     <Form>
-                        <Segment textAlign="left" color="red" stacked>
+                        <Segment textAlign="left" color="blue" stacked>
                             <Form.Input
                                 fluid
                                 icon="warehouse"
@@ -58,7 +58,7 @@ export default function RegisterEmployer() {
                             <Button color="green" as={NavLink} to="/employer">KAYIT OL</Button>
                         </Segment>
 
-                        <Message color = "yellow"><Link to={"/registeremployer"}><b>İşveren kayıtları sistem çalışanları tarafından onaylandıktan sonra aktif hale gelmektedir!</b></Link></Message>
+                        <Message color = "yellow"><b>İşveren kayıtları sistem çalışanları tarafından onaylandıktan sonra aktif hale gelmektedir!</b></Message>
 
                     </Form>
                 </Grid.Column>

@@ -1,34 +1,38 @@
-import { ADD_TO_FAVORITES, removeFromFavorites } from "../actions/favoriteAdvertActions";
-import { favoritesItems  } from "../initialValues/favoriteAdvertItems";
+import FavoriteAdvertisementsService from "../../Services/FavoriteAdvertisementsService";
+import { ADD_TO_FAVORITES, REMOVE_FROM_FAVORITES } from "../actions/favoriteAdvertActions";
+import { favoriteItems  } from "../initialValues/favoriteAdvertItems";
 
 const initialState = {
-    favoritesItems  : favoritesItems 
+    favoriteItems  : favoriteItems 
 }
 
 
 export default function favoriteAdvertReducer (state = initialState, {type,payload}) {
+    const favoriteAdvertisementsService = new FavoriteAdvertisementsService()
     switch (type) {
         case ADD_TO_FAVORITES:
-            let jobAdvertisement = state.favoritesItems.find(f=>f.jobAdvertisement.id === payload.id)
-            if (jobAdvertisement) 
-            {
+            let jobAdvert = state.favoriteItems.find(f=>f.jobAdvert.id === payload.id)
+            if (jobAdvert) 
+            {   
                 return{
                     ...state,
-                    favoritesItems: state.favoritesItems.filter(f=>f.jobAdvertisement.id !== payload.id )
+                    favoriteItems: state.favoriteItems.filter(f=>f.jobAdvert.id !== payload.id )
                 }
             }
             else
             {
+                let values = { jobAdvertId: payload.id, jobseekerId: 49 }
+                favoriteAdvertisementsService.add(values)
                 return{
                     ...state,
-                    favoritesItems:[...state.favoritesItems,{jobAdvertisement:payload}]
+                    favoriteItems:[...state.favoriteItems,{jobAdvert: payload}]
                 }
             }
 
-        case removeFromFavorites:
+        case REMOVE_FROM_FAVORITES:
             return{
                 ...state,
-                    favoritesItems: state.favoritesItems.filter(f=>f.jobAdvertisement.id !== payload.id )
+                favoriteItems: state.favoriteItems.filter(f=>f.jobAdvert.id !== payload.id )
             }
 
         default:

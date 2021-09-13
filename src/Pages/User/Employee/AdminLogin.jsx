@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from "react-router-dom";
-import { Grid, Header, Segment, Form, Message, Button } from "semantic-ui-react";
+import { Grid, Header, Segment, Form, Button } from "semantic-ui-react";
 
 export default function Admin() {
     return (
@@ -36,7 +36,7 @@ export default function Admin() {
                         </Segment>
                     </Form>
                 </Grid.Column>
-            </Grid>
+            </Grid><br/><br/><br/><br/><br/><br/>
         </div>
     )
 }

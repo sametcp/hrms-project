@@ -18,9 +18,7 @@ export default function UserList() {
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>Email</Table.HeaderCell>
-                        <Table.HeaderCell>Password</Table.HeaderCell>
                         <Table.HeaderCell>Created Date</Table.HeaderCell>
-                        <Table.HeaderCell>National Id</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
@@ -29,9 +27,7 @@ export default function UserList() {
                         users.map(users => (
                             <Table.Row key={users.id}>
                                 <Table.Cell>{users.email}</Table.Cell>
-                                <Table.Cell>{users.password}</Table.Cell>
                                 <Table.Cell>{users.createdDate}</Table.Cell>
-                                <Table.Cell>{users.nationalId}</Table.Cell>
                             </Table.Row>
                         ))
                     }

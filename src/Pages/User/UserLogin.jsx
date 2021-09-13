@@ -44,7 +44,7 @@ export default function UserLogin() {
                         </Segment>
                     </Form>
                 </Grid.Column>
-            </Grid>
+            </Grid><br/><br/>
         </div>
     )
 }

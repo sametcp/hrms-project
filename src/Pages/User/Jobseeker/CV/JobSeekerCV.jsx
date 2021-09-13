@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { NavLink, useParams } from 'react-router-dom'
 import { Segment, Table, Button } from 'semantic-ui-react'
 import CoverLetterService from "../../../../Services/CoverLetterService"
@@ -12,7 +12,7 @@ import SkillService from "../../../../Services/SkillService"
 
 export default function JobSeekerCV() {
 
-    let {id} = useParams()
+    let { id } = useParams()
 
     const [coverLetters, setCoverLetters] = useState([])
     const [educations, setEducations] = useState([])
@@ -33,13 +33,13 @@ export default function JobSeekerCV() {
 
 
         educationService.getByJobSeekerId(id).then(result => setEducations(result.data.data))
-        jobExperienceService.getByJobSeekerId(id).then(result=> setJobExperiences(result.data.data))
+        jobExperienceService.getByJobSeekerId(id).then(result => setJobExperiences(result.data.data))
         coverLetterService.getByJobSeekerId(id).then(result => setCoverLetters(result.data.data))
         languageService.getByJobSeekerId(id).then(result => setLanguages(result.data.data))
         linkService.getByJobSeekerId(id).then(result => setLinks(result.data.data))
         skillService.getByJobSeekerId(id).then(result => setSkills(result.data.data))
         imageService.getByJobSeekerId(id).then(result => setImage(result.data.data))
-    },[])
+    }, [])
 
     return (
         <div>
@@ -55,18 +55,18 @@ export default function JobSeekerCV() {
                 <Table.Body>
                     {
                         educations.map(education => (
-                            <Table.Row key = {education.id}>
+                            <Table.Row key={education.id}>
                                 <Table.Cell><b>Okul Adı : </b>{education.schoolName}</Table.Cell>
                                 <Table.Cell><b>Fakülte : </b>{education.department}</Table.Cell>
                                 <Table.Cell><b>Eğitime Başlama Tarihi : </b>{education.startDate}</Table.Cell>
                                 <Table.Cell ><b>Eğitimin Bitiş Tarihi : </b>{education.endDate}</Table.Cell>
-                               <Table.Cell><Button color ="green" style={{ marginTop: "10pt" }}
-                               as = {NavLink} to = {`/jobseeker/${id}/cv/${education.id}/updateeducationjobseeker`}>Güncelle</Button></Table.Cell>
-                            </Table.Row> 
+                                <Table.Cell><Button color="green" style={{ marginTop: "10pt" }}
+                                    as={NavLink} to={`/jobseeker/${id}/cv/${education.id}/updateeducationjobseeker`}>Güncelle</Button></Table.Cell>
+                            </Table.Row>
                         ))
                     }
                 </Table.Body>
-            </Table><br/>
+            </Table><br />
 
 
 
@@ -80,18 +80,18 @@ export default function JobSeekerCV() {
                 <Table.Body>
                     {
                         jobExperiences.map(jobExperience => (
-                            <Table.Row key = {jobExperience.id}>
+                            <Table.Row key={jobExperience.id}>
                                 <Table.Cell><b>İş Pozisyonu : </b>{jobExperience.position}</Table.Cell>
                                 <Table.Cell><b>İş Konumu : </b>{jobExperience.workplace}</Table.Cell>
                                 <Table.Cell><b>İşe Başlama Tarihi : </b>{jobExperience.startDate}</Table.Cell>
                                 <Table.Cell><b>İş Bitiş Tarihi : </b>{jobExperience.endDate}</Table.Cell>
-                                <Table.Cell><Button color ="green" style={{ marginTop: "10pt" }}
-                               as = {NavLink} to = {`/jobseeker/${id}/cv/${jobExperience.id}/updatejobexperiencejobseeker`}>Güncelle</Button></Table.Cell>
-                            </Table.Row> 
+                                <Table.Cell><Button color="green" style={{ marginTop: "10pt" }}
+                                    as={NavLink} to={`/jobseeker/${id}/cv/${jobExperience.id}/updatejobexperiencejobseeker`}>Güncelle</Button></Table.Cell>
+                            </Table.Row>
                         ))
                     }
                 </Table.Body>
-            </Table><br/>
+            </Table><br />
 
 
 
@@ -105,15 +105,15 @@ export default function JobSeekerCV() {
                 <Table.Body>
                     {
                         coverLetters.map(coverLetter => (
-                            <Table.Row key = {coverLetter.id}>
+                            <Table.Row key={coverLetter.id}>
                                 <Table.Cell><b>Açıklama : </b>{coverLetter.content}</Table.Cell>
-                                <Table.Cell><Button color ="green" style={{ marginTop: "10pt" }, {marginLeft : "10pt"}}
-                               as = {NavLink} to = {`/jobseeker/${id}/cv/${coverLetter.id}/updatecoverletterjobseeker`}>Güncelle</Button></Table.Cell>
-                            </Table.Row> 
+                                <Table.Cell><Button color="green" style={{ marginTop: "10pt" }, { marginLeft: "10pt" }}
+                                    as={NavLink} to={`/jobseeker/${id}/cv/${coverLetter.id}/updatecoverletterjobseeker`}>Güncelle</Button></Table.Cell>
+                            </Table.Row>
                         ))
                     }
                 </Table.Body>
-            </Table><br/>
+            </Table><br />
 
 
 
@@ -127,16 +127,17 @@ export default function JobSeekerCV() {
                 <Table.Body>
                     {
                         languages.map(language => (
-                            <Table.Row key = {language.id}>
+                            <Table.Row key={language.id}>
+                                
                                 <Table.Cell><b>Dil : </b>{language.language}</Table.Cell>
                                 <Table.Cell><b>Dil Seviyesi : </b>{language.level}</Table.Cell>
-                                <Table.Cell><Button  color ="green" style={{ marginTop: "10pt" }}
-                               as = {NavLink} to = {`/jobseeker/${id}/cv/${language.id}/updatelanguagejobseeker`}>Güncelle</Button></Table.Cell>
-                            </Table.Row> 
+                                <Table.Cell><Button color="green" style={{ marginTop: "10pt" }}
+                                    as={NavLink} to={`/jobseeker/${id}/cv/${language.id}/updatelanguagejobseeker`}>Güncelle</Button></Table.Cell>
+                            </Table.Row>
                         ))
                     }
                 </Table.Body>
-            </Table><br/>
+            </Table><br />
 
 
 
@@ -150,16 +151,16 @@ export default function JobSeekerCV() {
                 <Table.Body>
                     {
                         links.map(link => (
-                            <Table.Row key = {link.id}>
+                            <Table.Row key={link.id}>
                                 <Table.Cell><b>Github : </b>{link.githubUrl}</Table.Cell>
                                 <Table.Cell><b>Linkedin  : </b>{link.linkedinUrl}</Table.Cell>
-                                <Table.Cell><Button  color ="green" style={{ marginTop: "10pt" }}
-                               as = {NavLink} to = {`/jobseeker/${id}/cv/${link.id}/updatelinkjobseeker`}>Güncelle</Button></Table.Cell>
-                            </Table.Row> 
+                                <Table.Cell><Button color="green" style={{ marginTop: "10pt" }}
+                                    as={NavLink} to={`/jobseeker/${id}/cv/${link.id}/updatelinkjobseeker`}>Güncelle</Button></Table.Cell>
+                            </Table.Row>
                         ))
                     }
                 </Table.Body>
-            </Table><br/>
+            </Table><br />
 
 
 
@@ -167,21 +168,22 @@ export default function JobSeekerCV() {
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell colSpan="2">BİLİNEN PROGRAMLAMA DİLLERİ</Table.HeaderCell>
+
                     </Table.Row>
                 </Table.Header>
 
                 <Table.Body>
                     {
                         skills.map(skill => (
-                            <Table.Row key = {skill.id}>
+                            <Table.Row key={skill.id}>
                                 <Table.Cell><b>Programlama Dilleri : </b>{skill.skillName}</Table.Cell>
-                                <Table.Cell><Button  color ="green" style={{ marginTop: "10pt" }}
-                               as = {NavLink} to = {`/jobseeker/${id}/cv/${skill.id}/updateskilljobseeker`}>Güncelle</Button></Table.Cell>
-                            </Table.Row> 
+                                <Table.Cell><Button color="green" style={{ marginTop: "10pt" }}
+                                    as={NavLink} to={`/jobseeker/${id}/cv/${skill.id}/updateskilljobseeker`}>Güncelle</Button></Table.Cell>
+                            </Table.Row>
                         ))
                     }
                 </Table.Body>
-            </Table><br/>
+            </Table><br />
 
 
 
@@ -193,13 +195,13 @@ export default function JobSeekerCV() {
                 </Table.Header>
 
                 <Table.Body>
-                            <Table.Row >
-                                <Table.Cell><b>Fotoğrafın URL Adresi : </b>{image.url}</Table.Cell>
-                                <Table.Cell><Button  color ="green" style={{ marginTop: "10pt" }}
-                               as = {NavLink} to = {`/jobseeker/${id}/cv/${image.id}/updateimagejobseeker`}>Güncelle</Button></Table.Cell>
-                            </Table.Row> 
+                    <Table.Row >
+                        <Table.Cell><b>Fotoğrafın URL Adresi : </b>{image.url}</Table.Cell>
+                        <Table.Cell><Button color="green" style={{ marginTop: "10pt" }}
+                            as={NavLink} to={`/jobseeker/${id}/cv/${image.id}/updateimagejobseeker`}>Güncelle</Button></Table.Cell>
+                    </Table.Row>
                 </Table.Body>
-            </Table><br/>
+            </Table><br />
 
         </div>
     )

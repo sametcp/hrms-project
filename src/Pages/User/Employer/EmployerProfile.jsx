@@ -69,7 +69,7 @@ export default function EmployerProfile(props) {
                 </Table.Body>
             </Table><br />
 
-            <Button color="instagram" fluid as={NavLink} to="/employer/48/personalinfoupdate">Bilgilerini Güncelle</Button>
+            <Button color="instagram" fluid as={NavLink} to="/employer/48/personalinfo/update">Bilgilerini Güncelle</Button><br/>
 
             {confirmed ? <Message color = "yellow">Bilgileriniz yönetici tarafından onaylandığında güncellenecektir.</Message> : null}
 
