@@ -123,7 +123,7 @@ export default function JobAdvertFilter({ clickEvent }) {
                         />
                     ))
                 }
-            </Segment>
+            </Segment><br/>
             <Button
                 type="button"
                 style = {{width : "150px"}}
@@ -131,7 +131,7 @@ export default function JobAdvertFilter({ clickEvent }) {
                 onClick={() => clickEvent({ cityId: cityIndex, jobPositionId: jobPositionIndex, workTypeId: workTypeIndex, workHourId: workHourIndex })}
             >
                 Filtrele
-            </Button><br/>
+            </Button><br/><br/>
         </div>
     )
 }

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import {  Table, Button, Pagination, Select, Label } from 'semantic-ui-react';
 import JobAdvertService from '../../Services/JobAdvertService';
-import CityService from '../../Services/CityService'
 import FavoriteAdversitementsService from '../../Services/FavoriteAdvertisementsService'
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
@@ -11,9 +10,9 @@ import HRMSFilter from "./HRMSFilter"
 
 export default function JobAdvertList() {
 
-    let jobAdvertService = new JobAdvertService();
-    let favoriteAdvertisementsService = new FavoriteAdversitementsService()
-    let cityService = new CityService()
+    const jobAdvertService = new JobAdvertService();
+    const favoriteAdvertisementsService = new FavoriteAdversitementsService()
+    //const cityService = new CityService()
 
     const [pageNo, setPageNo] = useState(1);
     const [pageSize, setPageSize] = useState(10);
@@ -105,13 +104,11 @@ export default function JobAdvertList() {
             <Table celled>
                 <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell>Company</Table.HeaderCell>
-                        <Table.HeaderCell>Statement</Table.HeaderCell>
-                        <Table.HeaderCell>Job</Table.HeaderCell>
-                        <Table.HeaderCell>City</Table.HeaderCell>
-                        <Table.HeaderCell>Email</Table.HeaderCell>
-                        <Table.HeaderCell>Detail</Table.HeaderCell>
-                        <Table.HeaderCell>Favori</Table.HeaderCell>
+                        <Table.HeaderCell textAlign = "center">COMPANY</Table.HeaderCell>
+                        <Table.HeaderCell textAlign = "center">POSITION</Table.HeaderCell>
+                        <Table.HeaderCell textAlign = "center">CITY</Table.HeaderCell>
+                        <Table.HeaderCell textAlign = "center">DETAILS</Table.HeaderCell>
+                        <Table.HeaderCell textAlign = "center">FAVORITE</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
@@ -119,24 +116,26 @@ export default function JobAdvertList() {
                     {
                         jobAdverts.map(jobAdvert => (
                             <Table.Row key={jobAdvert.id}>
-                                <Table.Cell>{jobAdvert.employer.companyName}</Table.Cell>
-                                <Table.Cell>{jobAdvert.statement}</Table.Cell>
-                                <Table.Cell>{jobAdvert.jobPositions.jobTitle}</Table.Cell>
-                                <Table.Cell>{jobAdvert.city.name}</Table.Cell>
-                                <Table.Cell>{jobAdvert.employer.email}</Table.Cell>
+                                <Table.Cell verticalAlign = "middle">{jobAdvert?.employer?.companyName}</Table.Cell>
+                                <Table.Cell verticalAlign = "middle">{jobAdvert?.jobPositions?.jobTitle}</Table.Cell>
+                                <Table.Cell verticalAlign = "middle">{jobAdvert?.city?.name}</Table.Cell>
                                 <Table.Cell>
                                     <Button
+                                        style = {{marginLeft : "8pt"}}
                                         as={Link} to={`/jobadvert/${jobAdvert.id}/details`}
-                                        content="İlan Detayları"
+                                        content="İlan Detaylarına Git"
                                         icon="right arrow"
                                         labelPosition="right"
+                                        color = "purple"
                                     />
                                 </Table.Cell>
                                 <Table.Cell>
                                     <Button
+                                        style = {{marginLeft : "8pt"}}
                                         content="Favorilerime Ekle"
-                                        icon="right arrow"
+                                        icon="star"
                                         labelPosition="right"
+                                        color = "blue"
                                         onClick={() => favoriteAdvertFunction(jobAdvert)}
                                     />
                                 </Table.Cell>
@@ -149,7 +148,6 @@ export default function JobAdvertList() {
             
                 <Label size = "large" style = {{padding : "12px"}}>Bir Sayfadaki İlan Sayısını Belirle</Label>{' '}
                 <Select
-                    search
                     onChange={handleChangePageSize}
                     placeholder="Seçiniz"
                     options={pageSizeOptions}
@@ -164,7 +162,7 @@ export default function JobAdvertList() {
                 onPageChange={handleChangePageNo}
                 totalPages={totalPages}
             />
-
+            <br/><br/>
         </div>
     )
 }

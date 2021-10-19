@@ -20,15 +20,14 @@
     "redux": "^4.1.1",
     "redux-devtools-extension": "^2.13.9",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.3",
+    "semantic-ui-react": "^2.0.4",
     "web-vitals": "^1.1.2",
     "yup": "^0.32.9"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "CI=true react-scripts test"
   },
   "eslintConfig": {
     "extends": [

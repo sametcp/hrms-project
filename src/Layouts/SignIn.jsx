@@ -5,7 +5,7 @@ import { Dropdown, Image } from 'semantic-ui-react'
 export default function SignIn({signOut}) {
     return (
         <div>
-              <Image avatar spaced="right" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Silver_Classic_Tabby_British_Shorthair_Kitten.jpg/2363px-Silver_Classic_Tabby_British_Shorthair_Kitten.jpg"/>
+              <Image avatar spaced="right" src="https://i.scdn.co/image/ab67706c0000bebb547d2278113d73a3c8f1acc3"/>
                
                <Dropdown pointing="top right" text="Samet" style = {{marginTop: "7pt", marginRight : "7pt"}}>
                    <Dropdown.Menu>

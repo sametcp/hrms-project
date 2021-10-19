@@ -217,7 +217,7 @@ export default function JobAdvertAdd() {
                         </Form>
                     </Segment>
                 )}
-            </Formik>
+            </Formik><br/>
         </div>
     )
 

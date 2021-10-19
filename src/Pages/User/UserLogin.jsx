@@ -8,12 +8,12 @@ export default function UserLogin() {
         <div>
             <Grid textAlign="center" verticalAlign="middle">
                 <Grid.Column>
-                    <Header as="h2" inverted color="brown" textAlign="center">
+                    <Header as="h2" inverted color="blue" textAlign="center">
                         <Header.Content>KULLANICI GİRİŞİ</Header.Content>
                     </Header>
 
                     <Form>
-                        <Segment textAlign="left" color="green" stacked>
+                        <Segment textAlign="left" color="black" stacked>
                         
                             <Form.Input
                                 label="E-mail"
@@ -32,11 +32,11 @@ export default function UserLogin() {
                                 fluid
                             />
                             <br/>
-                            <Button color='green' as={NavLink} to="/">GİRİŞ YAP</Button>
+                            <Button color='blue' as={NavLink} to="/">GİRİŞ YAP</Button>
                             
                             <Message positive>
                                 Hesabınız yok mu ?{" "}
-                                <Button inverted color='google plus' size = "small" as={NavLink} to="/registerjobseeker">
+                                <Button color='green' size = "small" as={NavLink} to="/registerjobseeker">
                                     KAYIT OL
                                 </Button>
                             </Message>

@@ -55,7 +55,7 @@ export default function RegisterEmployer() {
                                 placeholder="Şifre tekrar"
                                 type="password"
                             />
-                            <Button color="green" as={NavLink} to="/employer">KAYIT OL</Button>
+                            <Button color="green" as={NavLink} to="/">KAYIT OL</Button>
                         </Segment>
 
                         <Message color = "yellow"><b>İşveren kayıtları sistem çalışanları tarafından onaylandıktan sonra aktif hale gelmektedir!</b></Message>

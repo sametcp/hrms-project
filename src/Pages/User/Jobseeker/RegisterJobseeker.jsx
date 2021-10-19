@@ -67,7 +67,7 @@ export default function RegisterJobseeker() {
                                 placeholder="Şifre tekrar"
                                 type="password"
                             />
-                            <Button color="green" as={NavLink} to="/jobseeker">KAYIT OL</Button>
+                            <Button color="green" as={NavLink} to="/">KAYIT OL</Button>
                         </Segment>
 
                     <Message color = "blue"><Link to={"/registeremployer"}><b>İşveren olarak kaydolmak için buraya tıkla</b></Link></Message>

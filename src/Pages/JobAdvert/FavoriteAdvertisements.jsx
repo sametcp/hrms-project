@@ -23,7 +23,7 @@ export default function FavoriteAdvertisements() {
         dispatch(removeFromFavorites(favoriteAdvert))
         favoriteAdvertisementsService.delete(favoriteAdvert.id)
         toast.success("İlan favorilerden kaldırıldı!", { theme: "colored" })
-        setTimeout(() => window.location.reload(), 400);
+        setTimeout(() => window.location.reload(), 1000);
     }
 
     return (
@@ -54,7 +54,7 @@ export default function FavoriteAdvertisements() {
                         ))
                     }
                 </Table.Body>
-            </Table>
+            </Table><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         </div>
     )
 }

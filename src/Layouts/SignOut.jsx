@@ -6,9 +6,9 @@ export default function SignOut(props) {
     return (
         <div>
             <Button.Group>
-                <Button onClick = {props.signIn} as={Link} to={"/userlogin"}>Giriş yap</Button>
-                <Button.Or />
-                <Button positive as={Link} to={"/registerjobseeker"}>Kaydol</Button>
+                <Button onClick = {props.signIn} as={Link} to={"/userlogin"} color = "blue" style = {{marginTop : "5pt"}}>Giriş yap</Button>
+                <Button.Or style = {{marginTop : "5pt"}}/>
+                <Button positive as={Link} to={"/registerjobseeker"} style = {{marginTop : "5pt"}}>Kaydol</Button>
             </Button.Group>
         </div>
     )

@@ -16,23 +16,23 @@ export default function PendingApproval() {
     //console.log(jobAdverts)
 
     const confirmTrue = (id, isConfirm) => {
-        jobAdvertService.updateIsConfirmTrue(id).then(toast.success("İlan onaylandı."))
-        setTimeout(() => window.location.reload(), 1000);
+        jobAdvertService.updateIsConfirmTrue(id).then(toast.success("İlan onaylandı.", { theme: "colored" }))
+        setTimeout(() => window.location.reload(), 1200);
     }
 
     const confirmFalse = (id, isConfirm) => {
-        jobAdvertService.updateIsConfirmFalse(id).then(toast.success("İlan onayı kaldırıldı."))
-        setTimeout(() => window.location.reload(), 1000);
+        jobAdvertService.updateIsConfirmFalse(id).then(toast.success("İlan onayı kaldırıldı.", { theme: "colored" }))
+        setTimeout(() => window.location.reload(), 1200);
     }
 
     const activeTrue = (id, isActive) => {
-        jobAdvertService.updateIsActiveTrue(id).then(toast.success("Yayın isteği onaylandı."))
-        setTimeout(() => window.location.reload(), 1000);
+        jobAdvertService.updateIsActiveTrue(id).then(toast.success("Yayın isteği onaylandı.", { theme: "colored" }))
+        setTimeout(() => window.location.reload(), 1200);
     }
 
     const activeFalse = (id) => {
-        jobAdvertService.updateIsActiveFalse(id).then(toast.success("Yayın isteği kaldırıldı."))
-        setTimeout(() => window.location.reload(), 1000);
+        jobAdvertService.updateIsActiveFalse(id).then(toast.success("Yayın isteği kaldırıldı.", { theme: "colored" }))
+        setTimeout(() => window.location.reload(), 1200);
     }
 
     return (
@@ -47,8 +47,7 @@ export default function PendingApproval() {
                     <Table.Row>
                         <Table.HeaderCell>id</Table.HeaderCell>
                         <Table.HeaderCell>Company</Table.HeaderCell>
-                        <Table.HeaderCell>Statement</Table.HeaderCell>
-                        <Table.HeaderCell>Job</Table.HeaderCell>
+                        <Table.HeaderCell>Position</Table.HeaderCell>
                         <Table.HeaderCell>City</Table.HeaderCell>
                         <Table.HeaderCell>Detail</Table.HeaderCell>
                         <Table.HeaderCell>Onay</Table.HeaderCell>
@@ -62,7 +61,6 @@ export default function PendingApproval() {
                             <Table.Row key={jobAdvert.id}>
                                 <Table.Cell>{jobAdvert.id}</Table.Cell>
                                 <Table.Cell>{jobAdvert.employer.companyName}</Table.Cell>
-                                <Table.Cell>{jobAdvert.statement}</Table.Cell>
                                 <Table.Cell>{jobAdvert.jobPositions.jobTitle}</Table.Cell>
                                 <Table.Cell>{jobAdvert.city.name}</Table.Cell>
                                 <Table.Cell>
@@ -79,11 +77,13 @@ export default function PendingApproval() {
                                         content="İlanı Pasifleştir"
                                         icon="delete"
                                         labelPosition="left"
+                                        color = "yellow"
                                         onClick={() => confirmFalse(jobAdvert.id, jobAdvert.confirm)}
                                     /> : <Button
                                         content="İlanı Onayla"
                                         icon="check"
                                         labelPosition="right"
+                                        color = "green"
                                         onClick={() => confirmTrue(jobAdvert.id, jobAdvert.confirm)}
                                     >
 
@@ -96,11 +96,13 @@ export default function PendingApproval() {
                                             content="Yayın Onayını Çek"
                                             labelPosition="left"
                                             onClick={() => activeFalse(jobAdvert.id, jobAdvert.active)}
+                                            color = "red"
                                         /> :
                                         <Button
                                             icon="check"
                                             content="Yayın Onayı"
                                             labelPosition="right"
+                                            color = "green"
                                             onClick={() => activeTrue(jobAdvert.id, jobAdvert.active)}
                                         />}
                                 </Table.Cell>
@@ -108,7 +110,7 @@ export default function PendingApproval() {
                         ))
                     }
                 </Table.Body>
-            </Table>
+            </Table><br/>
         </div>
     )
 }

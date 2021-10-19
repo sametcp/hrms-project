@@ -7,7 +7,6 @@ export default function HomePage() {
     return (
         <div>
             <div>
-                
                 <CardGroup>
                     <Card>
                         <CardImg top height="280" src="/ds-min.jpg" alt="Card image cap" />

@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { Table, Icon, Button, Segment } from 'semantic-ui-react'
 import JobAdvertService from '../../Services/JobAdvertService'
+import { useDispatch } from 'react-redux';
+import { addToFavorites } from '../../store/actions/favoriteAdvertActions';
 
 export default function JobAdvertDetail() {
 
@@ -12,12 +14,30 @@ export default function JobAdvertDetail() {
     const [jobAdvert, setJobAdvert] = useState({})
 
     useEffect(() => {
-        let jobAdvertService = new JobAdvertService()
+        const jobAdvertService = new JobAdvertService()
         jobAdvertService.getById(id).then(result => setJobAdvert(result.data.data))
     }, [])
 
     const toApply = () => {
         toast.success("Bilgileriniz işveren ile paylaşıldı.", { theme: "colored" })
+    }
+
+    const [favoriteAdvert, setFavoriteAdvert] = useState([]);
+
+    const dispatch = useDispatch()
+
+    const favoriteAdvertFunction = (jobAdvert) => {
+        let x = favoriteAdvert.find(y => y.jobAdvert.id == jobAdvert.id)
+        console.log(x?.jobAdvert?.id)
+        console.log(jobAdvert.id)
+        if (x?.jobAdvert?.id === jobAdvert.id) {
+            toast.error("Bu ilan zaten favorilerinde mevcut", { theme: "colored" })
+        }
+        else {
+            dispatch(addToFavorites(jobAdvert))
+            toast.success("İlan favorilere eklendi!", { theme: "colored" })
+            setTimeout(() => window.location.reload(), 1000);
+        }
     }
 
     //console.log(jobAdvert.jobPositions.jobTitle)
@@ -36,13 +56,13 @@ export default function JobAdvertDetail() {
                 <Table.Body>
 
                     <Table.Row>
-                        <Table.Cell><Icon name="warehouse" />Şirket</Table.Cell>
+                        <Table.Cell><Icon name="warehouse" color ="grey"/>Şirket</Table.Cell>
                         <Table.Cell><b>{jobAdvert.employer?.companyName}</b></Table.Cell>
                     </Table.Row>
 
 
                     <Table.Row>
-                        <Table.Cell><Icon color="blue" name="world" />Web Sitesi</Table.Cell>
+                        <Table.Cell><Icon name="world" color = "blue"/>Web Sitesi</Table.Cell>
                         <Table.Cell> <a rel="noreferrer"  target="_blank" href={"https://" + jobAdvert.employer?.website}>
                             {jobAdvert.employer?.website}</a>
                         </Table.Cell>
@@ -50,13 +70,13 @@ export default function JobAdvertDetail() {
 
 
                     <Table.Row>
-                        <Table.Cell><Icon color="black" name="phone" />Telefon Numarası</Table.Cell>
+                        <Table.Cell><Icon color="green" name="phone" />Telefon Numarası</Table.Cell>
                         <Table.Cell><b>{jobAdvert.employer?.phoneNumber}</b></Table.Cell>
                     </Table.Row>
 
 
                     <Table.Row>
-                        <Table.Cell><Icon name="map marker alternate" />Şehir</Table.Cell>
+                        <Table.Cell><Icon name="map marker alternate" color = "yellow" />Şehir</Table.Cell>
                         <Table.Cell>{jobAdvert.city?.name}</Table.Cell>
                     </Table.Row>
                 </Table.Body>
@@ -157,8 +177,9 @@ export default function JobAdvertDetail() {
             </Table>
 
             <br/>
-            <Button color="green" onClick = {() => {toApply()}}>BAŞVUR</Button><br/>
-            <Button as = {NavLink} to = "/jobadverts" color="instagram">Diğer iş ilanlarına göz at</Button>
+            <Button color="green" onClick = {() => toApply()}>BAŞVUR</Button><br/>
+            <Button as = {NavLink} to = "/jobadverts" color="instagram">Diğer iş ilanlarına göz at</Button><br/>
+            <Button color = "red" onClick = {() => favoriteAdvertFunction(jobAdvert)}>Favorilerime Ekle</Button>
         </div>
     )
 }
