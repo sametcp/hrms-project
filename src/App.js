@@ -5,15 +5,19 @@ import Navi from "./Layouts/Navi";
 import Dashboard from "./Layouts/Dashboard";
 import "./index.css";
 import Footer from "./Layouts/Footer";
+import { Route } from "react-router";
 
 function App() {
   return (
     <div className="App">
-      <Navi/>
-      <Container className="main">
-        <Dashboard/>
-      </Container><br/>
-      <Footer/>
+      <Route>
+        <Navi />
+        <Container className="main">
+          <Dashboard />
+        </Container>
+        <br />
+        <Footer />
+      </Route>
     </div>
   );
 }

@@ -6,11 +6,13 @@ import { Table, Icon, Button, Segment } from 'semantic-ui-react'
 import JobAdvertService from '../../Services/JobAdvertService'
 import { useDispatch } from 'react-redux';
 import { addToFavorites } from '../../store/actions/favoriteAdvertActions';
+import FavoriteAdvertisementsService from '../../Services/FavoriteAdvertisementsService'
 
 export default function JobAdvertDetail() {
 
     let { id } = useParams()
-
+    const favoriteAdvertisementsService = new FavoriteAdvertisementsService()
+    
     const [jobAdvert, setJobAdvert] = useState({})
 
     useEffect(() => {
@@ -22,6 +24,10 @@ export default function JobAdvertDetail() {
         toast.success("Bilgileriniz işveren ile paylaşıldı.", { theme: "colored" })
     }
 
+
+    useEffect(() => {
+        favoriteAdvertisementsService.getByJobSeekerId(49).then(result => setFavoriteAdvert(result.data.data))
+    }, [])
     const [favoriteAdvert, setFavoriteAdvert] = useState([]);
 
     const dispatch = useDispatch()

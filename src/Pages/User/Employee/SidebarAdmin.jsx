@@ -12,7 +12,7 @@ export default function AdminPanel() {
         <div>
              <Menu icon='labeled' vertical>
                 <Menu.Item as = {Link} to={`/admin/${id}/profile`}><Icon name='info' />Profil bilgilerim</Menu.Item>
-                <Menu.Item as = {Link} to={`/admin/${id}/unconfirmedprofiles`}><Icon name='clipboard check' />Onay Bekleyen<br/>Profil Güncellemeleri</Menu.Item>
+                {/* <Menu.Item as = {Link} to={`/admin/${id}/unconfirmedprofiles`}><Icon name='clipboard check' />Onay Bekleyen<br/>Profil Güncellemeleri</Menu.Item> */}
                 <Menu.Item as = {Link} to={`/admin/${id}/pendingapproval`}><Icon name='clipboard check' />Onay Bekleyen<br/>İş İlanları</Menu.Item>
                 <Menu.Item as = {Link} to={`/admin/${id}/employerlist`}><Icon name='user' />İşverenler Listesi</Menu.Item>
             </Menu>

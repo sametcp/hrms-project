@@ -59,8 +59,7 @@ export default function Dashboard() {
                     <Route path="/jobadverts" component={SidebarJobSeeker} />
 
                     <Route path="/admin/:id" component={SidebarAdmin} />
-                    
-                    
+                     
                 </Grid.Column>
 
 

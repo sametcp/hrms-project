@@ -21,7 +21,7 @@ export default function EmployeeProfile() {
 
     return (
         <div>
-            <Segment color="red" raised ><b>PROFİL BİLGİLERİM</b></Segment><br />
+            <Segment color="red" raised ><b>PROFİL BİLGİLERİM</b></Segment><br/>
 
             <Table color="green" celled striped>
                 <Table.Header>
@@ -57,9 +57,9 @@ export default function EmployeeProfile() {
                     </Table.Row>
 
                 </Table.Body>
-            </Table><br />
+            </Table><br/>
 
-            <Button color="instagram" fluid as={NavLink} to="/admin/63/update">Bilgilerini Güncelle</Button><br />
+            <Button color="instagram" fluid as={NavLink} to="/admin/63/update">Bilgilerini Güncelle</Button><br/><br/>
         </div>
     )
 }
